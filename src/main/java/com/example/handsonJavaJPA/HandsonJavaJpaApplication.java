@@ -7,6 +7,8 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
 
+import java.util.List;
+
 @SpringBootApplication
 public class HandsonJavaJpaApplication {
 
@@ -18,20 +20,32 @@ public class HandsonJavaJpaApplication {
 	public CommandLineRunner commandLineRunner(StudentDAO studentDAO) {
 		return runner -> {
 			// createStudent(studentDAO);
-			findStudentById(studentDAO);
+			// findStudentById(studentDAO);
+			queryForStudents(studentDAO);
 		};
 	}
+
 	public void createStudent(StudentDAO studentDAO) {
 		Student tempStudent = new Student("Paul", "Den", "Paul@gmail.com");
 		studentDAO.save(tempStudent);
 		System.out.println("Saving student: " + tempStudent);
 	}
+
 	public void findStudentById (StudentDAO studentDAO) {
 		int id = 1;
 		System.out.println("===inside find student====");
 		Student tempStudent = studentDAO.findStudentById(id);
 		System.out.println("===Finding student====" + tempStudent);
 	}
+
+	public void queryForStudents(StudentDAO studentDAO) {
+		List<Student> allStudents = studentDAO.findAll();
+		for (Student tempStudents: allStudents) {
+			System.out.println(tempStudents);
+		}
+
+	}
+
 }
 //The method main() in HandsonJavaJpaApplication.java is called.
 //Spring Boot starts and initializes the Spring context

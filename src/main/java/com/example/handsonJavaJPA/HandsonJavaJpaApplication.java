@@ -20,9 +20,21 @@ public class HandsonJavaJpaApplication {
 			createStudent(studentDAO);
 		};
 	}
-	public void createStudent(StudentDAO theStudent) {
+	public void createStudent(StudentDAO studentDAO) {
 		Student tempStudent = new Student("Paul", "Den", "Paul@gmail.com");
-		theStudent.save(tempStudent);
+		studentDAO.save(tempStudent);
 		System.out.println("Saving student: " + tempStudent);
 	}
 }
+//The method main() in HandsonJavaJpaApplication.java is called.
+//Spring Boot starts and initializes the Spring context
+// The @Bean annotated method commandLineRunner() is executed after the application context is loaded.
+// Spring injects a StudentDAO instance into this method.
+// The CommandLineRunner triggers the method createStudent(studentDAO)
+// Inside createStudent()
+// A new Student object is created.
+// The constructor sets its firstName, lastName, and email.
+// theStudent.save(tempStudent); calls save() in your StudentDAOImpl.
+// The EntityManager is JPA's way of interacting with the database.
+// persist() tells JPA to insert the student into the database.
+// Since @Transactional is used, this runs in a transaction.

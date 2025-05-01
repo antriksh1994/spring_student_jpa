@@ -41,7 +41,7 @@ public class HandsonJavaJpaApplication {
 // Inside createStudent()
 // A new Student object is created.
 // The constructor sets its firstName, lastName, and email.
-// theStudent.save(tempStudent); calls save() in your StudentDAOImpl.
+// studentDAO.save(tempStudent); calls save() in your StudentDAOImpl.
 // The EntityManager is JPA's way of interacting with the database.
 // persist() tells JPA to insert the student into the database.
 // Since @Transactional is used, this runs in a transaction.

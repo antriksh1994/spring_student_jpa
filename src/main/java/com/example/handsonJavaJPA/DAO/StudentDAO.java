@@ -4,4 +4,5 @@ import com.example.handsonJavaJPA.Entity.Student;
 
 public interface StudentDAO {
     void save(Student theStudent);
+    Student findStudentById(int theId);
 }

@@ -17,13 +17,20 @@ public class HandsonJavaJpaApplication {
 	@Bean
 	public CommandLineRunner commandLineRunner(StudentDAO studentDAO) {
 		return runner -> {
-			createStudent(studentDAO);
+			// createStudent(studentDAO);
+			findStudentById(studentDAO);
 		};
 	}
 	public void createStudent(StudentDAO studentDAO) {
 		Student tempStudent = new Student("Paul", "Den", "Paul@gmail.com");
 		studentDAO.save(tempStudent);
 		System.out.println("Saving student: " + tempStudent);
+	}
+	public void findStudentById (StudentDAO studentDAO) {
+		int id = 1;
+		System.out.println("===inside find student====");
+		Student tempStudent = studentDAO.findStudentById(id);
+		System.out.println("===Finding student====" + tempStudent);
 	}
 }
 //The method main() in HandsonJavaJpaApplication.java is called.
